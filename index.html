@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.9.10/htmx.min.js" integrity="sha512-9qpauSP4+dDIldsrdNEZ2Z7JoyLZGfJsAP2wfXnc3drOh+5NXOBxjlq3sGXKdulmN9W+iwLxRt42zKMa8AHEeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello GO!</h1>
+
+    <ul id="list-movies">
+        {{ range .Films }}
+        <li>{{.Title}} - {{ .Director }}</li>
+        {{end}}
+    </ul>
+
+    <form hx-post="/add-film/" hx-swap="beforeend" hx-target="#list-movies">
+        <input placeholder="Title" type="text" name="title" id="title">
+        <input placeholder="Director" type="text" name="director" id="director">
+        <button type="submit" value="Send">
+    </form>
+</body>
+</html>
